@@ -8,9 +8,12 @@ class Program
         Console.Write("Enter a first name: ");
         string firstName = Console.ReadLine();
 
-        if (IsValidFirstName(firstName))
+        Console.Write("Enter Last Name: ");
+        string lastName = Console.ReadLine();
+
+        if (IsValidFirstName(firstName) && IsValidLastName(lastName))
         {
-            Console.WriteLine("First Name is Valid");
+            Console.WriteLine("Name is Valid");
         }
         else
         {
@@ -22,5 +25,11 @@ class Program
     {
         string pattern = @"^[A-Z][a-zA-Z]{2,}$";
         return Regex.IsMatch(firstName, pattern);
+    }
+
+    static bool IsValidLastName(string lasName)
+    {
+        string pattern = @"^[A_Z}{1}[a-zA-Z]{2,}";
+        return Regex.IsMatch(lasName, pattern);
     }
 }
