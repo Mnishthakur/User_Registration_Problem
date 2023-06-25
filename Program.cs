@@ -40,6 +40,13 @@ class Program
             return false;
         }
 
+        // Rule 4: Exactly 1 special character
+        string specialCharPattern = @"^[a-zA-Z0-9]*[^a-zA-Z0-9]{1}[a-zA-Z0-9]*$";
+        if (!Regex.IsMatch(password, specialCharPattern))
+        {
+            return false;
+        }
+
         // All rules passed
         return true;
     }
