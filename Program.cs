@@ -5,49 +5,30 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Enter a password: ");
-        string password = Console.ReadLine();
+        string[] emailSamples = {
+            "abc.xyz@bl.co.in",
+            "test@example.com",
+            "john.doe@gmail.com",
+            "invalid_email",
+            "user@123.com"
+        };
 
-        if (IsValidPassword(password))
+        foreach (string email in emailSamples)
         {
-            Console.WriteLine("Valid password!");
-        }
-        else
-        {
-            Console.WriteLine("Invalid password!");
+            if (IsValidEmail(email))
+            {
+                Console.WriteLine($"{email} - Valid email address!");
+            }
+            else
+            {
+                Console.WriteLine($"{email} - Invalid email address!");
+            }
         }
     }
 
-    static bool IsValidPassword(string password)
+    static bool IsValidEmail(string email)
     {
-        // Rule 1: Minimum 8 characters
-        if (password.Length < 8)
-        {
-            return false;
-        }
-
-        // Rule 2: At least 1 uppercase letter
-        string uppercasePattern = @"[A-Z]";
-        if (!Regex.IsMatch(password, uppercasePattern))
-        {
-            return false;
-        }
-
-        // Rule 3: At least 1 numeric number
-        string numericPattern = @"\d";
-        if (!Regex.IsMatch(password, numericPattern))
-        {
-            return false;
-        }
-
-        // Rule 4: Exactly 1 special character
-        string specialCharPattern = @"^[a-zA-Z0-9]*[^a-zA-Z0-9]{1}[a-zA-Z0-9]*$";
-        if (!Regex.IsMatch(password, specialCharPattern))
-        {
-            return false;
-        }
-
-        // All rules passed
-        return true;
+        string pattern = @"^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$";
+        return Regex.IsMatch(email, pattern);
     }
 }
