@@ -27,8 +27,15 @@ class Program
         }
 
         // Rule 2: At least 1 uppercase letter
-        string pattern = @"[A-Z]";
-        if (!Regex.IsMatch(password, pattern))
+        string uppercasePattern = @"[A-Z]";
+        if (!Regex.IsMatch(password, uppercasePattern))
+        {
+            return false;
+        }
+
+        // Rule 3: At least 1 numeric number
+        string numericPattern = @"\d";
+        if (!Regex.IsMatch(password, numericPattern))
         {
             return false;
         }
