@@ -5,22 +5,22 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Enter an email address: ");
-        string email = Console.ReadLine();
+        Console.Write("Enter a mobile number: ");
+        string mobileNumber = Console.ReadLine();
 
-        if (IsValidEmail(email))
+        if (IsValidMobileNumber(mobileNumber))
         {
-            Console.WriteLine("Valid email address!");
+            Console.WriteLine("Valid mobile number!");
         }
         else
         {
-            Console.WriteLine("Invalid email address!");
+            Console.WriteLine("Invalid mobile number!");
         }
     }
 
-    static bool IsValidEmail(string email)
+    static bool IsValidMobileNumber(string mobileNumber)
     {
-        string pattern = @"^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$";
-        return Regex.IsMatch(email, pattern);
+        string pattern = @"^\d{2}\s\d{10}$";
+        return Regex.IsMatch(mobileNumber, pattern);
     }
 }
