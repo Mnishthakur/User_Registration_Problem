@@ -5,31 +5,22 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Enter a first name: ");
-        string firstName = Console.ReadLine();
+        Console.Write("Enter an email address: ");
+        string email = Console.ReadLine();
 
-        Console.Write("Enter Last Name: ");
-        string lastName = Console.ReadLine();
-
-        if (IsValidFirstName(firstName) && IsValidLastName(lastName))
+        if (IsValidEmail(email))
         {
-            Console.WriteLine("Name is Valid");
+            Console.WriteLine("Valid email address!");
         }
         else
         {
-            Console.WriteLine("Invalid Name");
+            Console.WriteLine("Invalid email address!");
         }
     }
 
-    static bool IsValidFirstName(string firstName)
+    static bool IsValidEmail(string email)
     {
-        string pattern = @"^[A-Z][a-zA-Z]{2,}$";
-        return Regex.IsMatch(firstName, pattern);
-    }
-
-    static bool IsValidLastName(string lasName)
-    {
-        string pattern = @"^[A_Z}{1}[a-zA-Z]{2,}";
-        return Regex.IsMatch(lasName, pattern);
+        string pattern = @"^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([.-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$";
+        return Regex.IsMatch(email, pattern);
     }
 }
