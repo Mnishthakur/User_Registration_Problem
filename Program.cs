@@ -5,22 +5,21 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Enter a mobile number: ");
-        string mobileNumber = Console.ReadLine();
+        Console.Write("Enter a password: ");
+        string password = Console.ReadLine();
 
-        if (IsValidMobileNumber(mobileNumber))
+        if (IsValidPassword(password))
         {
-            Console.WriteLine("Valid mobile number!");
+            Console.WriteLine("Valid password!");
         }
         else
         {
-            Console.WriteLine("Invalid mobile number!");
+            Console.WriteLine("Invalid password!");
         }
     }
 
-    static bool IsValidMobileNumber(string mobileNumber)
+    static bool IsValidPassword(string password)
     {
-        string pattern = @"^\d{2}\s\d{10}$";
-        return Regex.IsMatch(mobileNumber, pattern);
+        return password.Length >= 8;
     }
 }
