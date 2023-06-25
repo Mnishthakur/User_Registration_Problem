@@ -20,6 +20,20 @@ class Program
 
     static bool IsValidPassword(string password)
     {
-        return password.Length >= 8;
+        // Rule 1: Minimum 8 characters
+        if (password.Length < 8)
+        {
+            return false;
+        }
+
+        // Rule 2: At least 1 uppercase letter
+        string pattern = @"[A-Z]";
+        if (!Regex.IsMatch(password, pattern))
+        {
+            return false;
+        }
+
+        // All rules passed
+        return true;
     }
 }
