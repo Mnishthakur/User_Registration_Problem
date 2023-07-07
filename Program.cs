@@ -12,7 +12,6 @@ class Program
             "invalid_email",
             "user@123.com"
         };
-
         foreach (string email in emailSamples)
         {
             if (IsValidEmail(email))
